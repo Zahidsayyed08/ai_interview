@@ -2,3 +2,4 @@ node_modules
 temp_frames
 static
 instance
+__pycache__

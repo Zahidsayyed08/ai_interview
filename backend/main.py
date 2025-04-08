@@ -21,7 +21,7 @@ frame_count = 0
 
 
 TEMP_FRAMES_DIR = "temp_frames"
-VIDEO_OUTPUT_PATH = "static/videos/"
+VIDEO_OUTPUT_PATH = "static/output.mp4"
 
 if not os.path.exists(TEMP_FRAMES_DIR):
     os.makedirs(TEMP_FRAMES_DIR)
@@ -270,7 +270,7 @@ def create_video(video_path):
 # Route to stop and generate video
 @app.route('/stop', methods=['GET'])
 def stop():
-    success = create_video()
+    success = create_video(video_path=VIDEO_OUTPUT_PATH)  # Your function should now take `video_path`
     if success:
         return jsonify({"message": "Video created successfully", "video_path": VIDEO_OUTPUT_PATH})
     else:
