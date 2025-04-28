@@ -6,6 +6,8 @@ import Login from "./components/Auth/Login"
 import Signup from "./components/Auth/Signup"
 import CandidateDashboard from "./components/Dashboard/CandidateDashboard"
 import InterviewPage from "./components/Interview/InterviewPage"
+import VoiceInterviewPage from "./components/Interview/VoiceInterviewPage"
+import AnimatedLandingPage from "./components/Landing/AnimatedLandingPage"
 import Navbar from "./components/Layout/Navbar"
 import axios from "axios"
 import "./App.css"
@@ -65,25 +67,23 @@ function App() {
     <Router>
       <div className="app">
         <Navbar isLoggedIn={isLoggedIn} user={user} onLogout={handleLogout} />
-        <div className="container">
-          <Routes>
-            <Route
-              path="/login"
-              element={isLoggedIn ? <Navigate to="/dashboard" /> : <Login onLogin={handleLogin} />}
-            />
-            <Route path="/signup" element={isLoggedIn ? <Navigate to="/dashboard" /> : <Signup />} />
-            <Route
-              path="/dashboard"
-              element={isLoggedIn ? <CandidateDashboard user={user} /> : <Navigate to="/login" />}
-            />
-            <Route path="/interview" element={isLoggedIn ? <InterviewPage user={user} /> : <Navigate to="/login" />} />
-            <Route path="/" element={<Navigate to={isLoggedIn ? "/dashboard" : "/login"} />} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/" element={<AnimatedLandingPage />} />
+          <Route path="/login" element={isLoggedIn ? <Navigate to="/dashboard" /> : <Login onLogin={handleLogin} />} />
+          <Route path="/signup" element={isLoggedIn ? <Navigate to="/dashboard" /> : <Signup />} />
+          <Route
+            path="/dashboard"
+            element={isLoggedIn ? <CandidateDashboard user={user} /> : <Navigate to="/login" />}
+          />
+          <Route path="/interview" element={isLoggedIn ? <InterviewPage user={user} /> : <Navigate to="/login" />} />
+          <Route
+            path="/voice-interview"
+            element={isLoggedIn ? <VoiceInterviewPage user={user} /> : <Navigate to="/login" />}
+          />
+        </Routes>
       </div>
     </Router>
   )
 }
 
 export default App
-

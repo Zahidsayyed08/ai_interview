@@ -17,6 +17,13 @@ body {
   padding: 20px;
 }
 
+/* Override container for landing page */
+.landing-page {
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
 .card {
   background: white;
   border-radius: 8px;
@@ -35,6 +42,7 @@ body {
   cursor: pointer;
   font-size: 16px;
   transition: background 0.3s;
+  text-decoration: none;
 }
 
 .btn:hover {
@@ -55,6 +63,11 @@ body {
 
 .btn-success:hover {
   background: #218838;
+}
+
+.btn-lg {
+  padding: 12px 24px;
+  font-size: 18px;
 }
 
 .form-group {
@@ -97,4 +110,3 @@ body {
     flex-direction: column;
   }
 }
-

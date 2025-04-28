@@ -106,7 +106,7 @@ function WebcamFeed({ webcamRef, isActive }) {
           }}
         />
       </div>
-      <div className="emotion-analysis">
+      {/* <div className="emotion-analysis">
         <h4>Emotion Analysis</h4>
         <div className="emotion-metrics">
           <div className="emotion-metric">
@@ -136,7 +136,7 @@ function WebcamFeed({ webcamRef, isActive }) {
           </div>
         </div>
         <p className="emotion-note">Stay focused and engaged during the interview</p>
-      </div>
+      </div> */}
     </div>
   )
 }

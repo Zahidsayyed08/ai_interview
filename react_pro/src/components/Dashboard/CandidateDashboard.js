@@ -99,16 +99,25 @@ function CandidateDashboard({ user }) {
     navigate("/interview")
   }
 
+  const handleStartVoiceInterview = () => {
+    if (!resumeText) {
+      setError("Please upload your resume before starting the interview")
+      return
+    }
+
+    navigate("/voice-interview")
+  }
+
   return (
     <div className="dashboard-container">
       <h1>Candidate Dashboard</h1>
 
+      {error && <div className="alert alert-danger">{error}</div>}
+      {uploadStatus && <div className="alert alert-success">{uploadStatus}</div>}
+
       <div className="dashboard-grid">
         <div className="dashboard-card">
           <h2>Upload Resume</h2>
-          {error && <div className="alert alert-danger">{error}</div>}
-          {uploadStatus && <div className="alert alert-success">{uploadStatus}</div>}
-
           <form onSubmit={handleUpload}>
             <div className="form-group">
               <label htmlFor="resume">Upload PDF Resume</label>
@@ -128,14 +137,30 @@ function CandidateDashboard({ user }) {
         </div>
       </div>
 
-      <div className="dashboard-actions">
-        <button className="btn btn-success btn-lg" onClick={handleStartInterview} disabled={!resumeText}>
-          Start Interview
-        </button>
+      <div className="interview-options">
+        <h2>Interview Options</h2>
+        <div className="interview-types">
+          <div className="interview-type-card">
+            <div className="interview-type-icon">💬</div>
+            <h3>Text Interview</h3>
+            <p>Traditional interview with text-based questions and answers</p>
+            <button className="btn btn-primary" onClick={handleStartInterview} disabled={!resumeText}>
+              Start Text Interview
+            </button>
+          </div>
+
+          <div className="interview-type-card highlight">
+            <div className="interview-type-icon">🎤</div>
+            <h3>Voice Interview</h3>
+            <p>Interactive interview with voice recognition and speech synthesis</p>
+            <button className="btn btn-success" onClick={handleStartVoiceInterview} disabled={!resumeText}>
+              Start Voice Interview
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   )
 }
 
 export default CandidateDashboard
-
